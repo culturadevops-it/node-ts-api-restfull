@@ -26,6 +26,7 @@ spec:
         name:
           title: Artifact Name
           type: string
+          default: teseo-faqs-service
           description: The name of the artifact. It must start and end with a letter, and
             can contain underscores and numbers in between. Maximum length is 30
             characters.
@@ -35,15 +36,18 @@ spec:
         description:
           title: Artifact Description
           type: string
+          default: Api for artifact
           description: A short description of the artifact.
         owner:
           title: Owner
           type: string
+          default: adminers
           description: The owner of the artifact.
           ui:field: MyGroupsPicker
         system:
           title: System
           type: string
+          default: system:culturadevopsit-services
           description: The system this artifact belongs to.
           ui:field: EntityPicker
           ui:options:
