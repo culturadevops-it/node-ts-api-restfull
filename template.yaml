@@ -103,7 +103,6 @@ spec:
               - culturadevopsit
             allowedHosts:
               - github.com
-              - dev.azure.com
   steps:
     - id: fetch-base
       name: Fetch Base
