@@ -105,6 +105,8 @@ spec:
           ui:options:
             allowedHosts:
               - github.com
+            allowedOwners:
+              - culturadevops-it
   steps:
     - id: fetch-base
       name: Fetch Base
@@ -112,19 +114,19 @@ spec:
       input:
         url: ./skeleton
         values:
-          name: "{{ parameters.name }}"
-          description: "{{ parameters.description }}"
-          owner: "{{ parameters.owner }}"
-          system: "{{ parameters.system }}"
+          name: "${{ parameters.name }}"
+          description: "${{ parameters.description }}"
+          owner: "${{ parameters.owner }}"
+          system: "${{ parameters.system }}"
           repoUrl: ${{ parameters.repoUrl }}
-          azure_docker_registry_scv_connection: "{{ parameters.azure_docker_registry_scv_connection }}"
-          azure_docker_registry_hostname: "{{ parameters.azure_docker_registry_hostname }}"
-          database_username: "{{ parameters.database_username }}"
-          database_password: "{{ parameters.database_password }}"
-          database_database: "{{ parameters.database_database }}"
-          database_hostname: "{{ parameters.database_hostname }}"
-          database_hostport: "{{ parameters.database_hostport }}"
-          application_port: "{{ parameters.application_port }}"
+          azure_docker_registry_scv_connection: "${{ parameters.azure_docker_registry_scv_connection }}"
+          azure_docker_registry_hostname: "${{ parameters.azure_docker_registry_hostname }}"
+          database_username: "${{ parameters.database_username }}"
+          database_password: "${{ parameters.database_password }}"
+          database_database: "${{ parameters.database_database }}"
+          database_hostname: "${{ parameters.database_hostname }}"
+          database_hostport: "${{ parameters.database_hostport }}"
+          application_port: "${{ parameters.application_port }}"
 
     - id: publish
       name: Publish
