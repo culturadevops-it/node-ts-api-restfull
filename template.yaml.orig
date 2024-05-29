@@ -130,9 +130,9 @@ spec:
         allowedHosts:
           - github.com
           - dev.azure.com
-        description: this is {{ parameters.name }}
+        description: this is ${{ parameters.name }}
         repoUrl: xxxxxxxxx
-        gitCommitMessage: Congratulations !! take your {{ parameters.name }} artifact :)
+        gitCommitMessage: Congratulations !! take your ${{ parameters.name }} artifact :)
         topics:
           - backstage-include
           - culturadevops-it

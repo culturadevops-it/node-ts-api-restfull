@@ -4,7 +4,7 @@ metadata:
   name: ${{ values.name | dump }}
   description: ${{ values.description | dump }}
   annotations:
-    github.com/project-slug: ${{ values.destination.owner + "/" + values.destination.repo }}
+    github.com/project-slug: ${{ values.github_username + "/" + values.name }}
     backstage.io/techdocs-ref: dir:.
     grafana/dashboard-selector: backstage-grafana-selector
   description:  ${{ values.description }}
@@ -16,15 +16,15 @@ metadata:
     - typescript
     - node
   links:
-    - url: https://github.com/${{values.destination.owner + "/" + values.destination.repo}}
+    - url: https://github.com/${{values.github_username + "/" + values.name}}
       title: Repository
       icon: github
 spec:
   type: service
   lifecycle: experimental
   owner: ${{ values.owner | dump }}
-  system: ${ {values.system }}
+  system: ${{ values.system }}
   providesApis:
-    - component:${{ values.name }}
+    - component: ${{ values.name }}
   dependencies:
-    - resource:${{ values.database_hostname }}
+    - resource: ${{ values.database_hostname }}
