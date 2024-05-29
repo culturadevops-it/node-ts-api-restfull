@@ -130,7 +130,7 @@ spec:
       name: Publish
       action: publish:github
       input:
-        token: "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"
+        token: "{{ parameters.github_token }}"
         allowedHosts:
           - github.com
         repoUrl: ${{ parameters.repoUrl }}
