@@ -132,6 +132,8 @@ spec:
           ui:options:
             allowedHosts:
               - dev.azure.com
+            allowedOwners:
+              - culturadevops-it
 
   steps:
     - id: fetch-base
