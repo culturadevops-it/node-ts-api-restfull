@@ -6,8 +6,9 @@ metadata:
   title: Node Typescript RestfullApi Backstage
   description: Scaffolds node-ts-restfull-api template
 spec:
-  owner: user:culturadevops-it
+  owner: user:guest
   type: service
+
   parameters:
     - title: Basic sets
       required:
@@ -122,5 +123,29 @@ spec:
           database_hostname: "{{ parameters.database_hostname }}"
           database_hostport: "{{ parameters.database_hostport }}"
           application_port: "{{ parameters.application_port }}"
+
+
+    - id: publish
+      name: Publish
+      action: publish:github
+      input:
+        allowedHosts: ['github.com']
+        description: This is ${{ parameters.artifact_name }}
+        repoUrl: ${{ parameters.repoUrl }}
+
+    - id: register
+      name: Register
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
+        catalogInfoPath: '/catalog-info.yaml'
+
+
 output:
+    links:
+      - title: Repository
+        url: ${{ steps['publish'].output.remoteUrl }}
+      - title: Open in catalog
+        icon: catalog
+        entityRef: ${{ steps['register'].output.entityRef }}
 
