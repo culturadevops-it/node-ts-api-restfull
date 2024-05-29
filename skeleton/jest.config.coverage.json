@@ -1,0 +1,41 @@
+{
+  "preset": "ts-jest",
+  "testEnvironment": "node",
+  "testMatch": [
+    "!**/__fixtures__/**",
+    "**/tests/**/*.test.ts"
+  ],
+  "testPathIgnorePatterns": [
+    "<rootDir>/node_modules/",
+    "<rootDir>/dist/"
+  ],
+  "roots": [
+    "<rootDir>/tests/"
+  ],
+  "detectOpenHandles": true,
+  "collectCoverage": true,
+  "forceExit": true,
+  "coverageDirectory": "coverage",
+  "collectCoverageFrom": [
+    "**/src/**",
+    "!**/node_modules/**",
+    "!**/tests/**",
+    "!**/_tests/**",
+    "!**/vendor/**"
+  ],
+  "coveragePathIgnorePatterns": [
+    "<rootDir>/node_modules/",
+    "<rootDir>/dist/"
+  ],
+  "reporters": [
+    "default",
+    [
+      "jest-html-reporters",
+      {
+        "publicPath": "coverage",
+        "filename": "index_reporter.html",
+        "expand": true
+      }
+    ]
+  ]
+}
