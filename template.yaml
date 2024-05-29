@@ -27,9 +27,9 @@ spec:
           title: Artifact Name
           type: string
           description: The name of the artifact. It must start and end with a letter, and
-            can contain underscores and numbers in between. Maximum length is 15
+            can contain underscores and numbers in between. Maximum length is 30
             characters.
-          pattern: ^[a-z][a-z0-9\-]{0,13}[a-z]$
+          pattern: ^[a-z][a-z0-9-_]{0,13}[a-z]$
           minLength: 3
           maxLength: 30
         description:
