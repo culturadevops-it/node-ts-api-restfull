@@ -7,7 +7,6 @@ metadata:
     github.com/project-slug: ${{ values.github_username + "/" + values.name }}
     backstage.io/techdocs-ref: dir:.
     grafana/dashboard-selector: backstage-grafana-selector
-  description: ${{ values.description | dump }}
   tags:
     - microservice
     - backend
