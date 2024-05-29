@@ -2,7 +2,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: ${{ values.name }}
-  description: ${{ values.description | dump }}
+  description: ${{ values.description }}
   annotations:
     github.com/project-slug: ${{ values.github_username + "/" + values.name }}
     backstage.io/techdocs-ref: dir:.
@@ -21,7 +21,8 @@ metadata:
 spec:
   type: service
   lifecycle: experimental
-  owner: ${{ values.owner | dump }}
+  owner: ${{ values.owner }}
   system: ${{ values.system }}
+    - component:${{ values.name }}
   dependencies:
-    - resource: ${{ values.database_hostname }}
+    - resource:${{ values.database_hostname }}
