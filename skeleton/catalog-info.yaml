@@ -15,7 +15,7 @@ metadata:
     - node
 spec:
   type: service
-  lifecycle: experimental
+  lifecycle: production
   owner: ${{ values.owner }}
   system: ${{ values.system }}
     - component:${{ values.name }}
