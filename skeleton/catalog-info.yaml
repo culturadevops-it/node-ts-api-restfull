@@ -1,11 +1,11 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: ${{ values.artifact_name }}
+  name: ${{ parameters.artifact_name }}
   annotations:
     grafana/dashboard-selector: backstage-grafana-selector
     backstage.io/techdocs-ref: dir:.
-  description:  ${{ values.artifact_description }}
+  description:  ${{ parameters.artifact_description }}
   tags:
     - microservice
     - backend
@@ -16,9 +16,9 @@ metadata:
 spec:
   type: service
   lifecycle: experimental
-  owner: ${{ values.owner | dump }}
-  system: ${ {values.system }}
+  owner: ${{ parameters.owner | dump }}
+  system: ${ {parameters.system }}
   providesApis:
-    - component:${{ values.artifact_name }}
+    - component:${{ parameters.artifact_name }}
   dependencies:
-    - resource:${{ values.database_hostname }}
+    - resource:${{ parameters.database_hostname }}

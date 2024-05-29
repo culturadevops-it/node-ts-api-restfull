@@ -13,10 +13,10 @@ resources:
 - repo: self
 
 variables:
-  # ${{ values.artifact_name }} build and publish
-  dockerRegistryServiceConnection: '${{ values.azure_docker_registry_scv_connection }}'
-  imageRepository: '${{ values.artifact_name }}'
-  containerRegistry: '${{ values.azure_docker_registry_hostname }}'
+  # ${{ parameters.artifact_name }} build and publish
+  dockerRegistryServiceConnection: '${{ parameters.azure_docker_registry_scv_connection }}'
+  imageRepository: '${{ parameters.artifact_name }}'
+  containerRegistry: '${{ parameters.azure_docker_registry_hostname }}'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tagBuildId: '$(Build.BuildId)'
   tagLatest: 'latest'
