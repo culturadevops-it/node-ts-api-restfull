@@ -54,10 +54,12 @@ spec:
         azure_docker_registry_scv_connection:
           title: Azure Docker Registry Service Connection
           type: string
+          default: 33c2a3dc-bf12-42a5-acc7-54a52c421fa0
           description: The service connection string for Azure Docker Registry.
         azure_docker_registry_hostname:
           title: Azure Docker Registry Hostname
           type: string
+          default: culturadevopsit.azurecr.io
           description: The hostname for the Azure Docker Registry. It should follow the
             syntax of a valid hostname.
           pattern: ^(?!-)[A-Za-z0-9-]{1,63}(?<!-)(?:\.[A-Za-z0-9-]{1,63})*$
