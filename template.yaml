@@ -1,5 +1,5 @@
+---
 apiVersion: scaffolder.backstage.io/v1beta3
-# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-template
 kind: Template
 metadata:
   name: node-ts-restfull-api
@@ -7,7 +7,6 @@ metadata:
 spec:
   owner: user:guest
   type: service
-
   parameters:
     - title: Basic sets
       required:
@@ -103,7 +102,6 @@ spec:
               - culturadevopsit
             allowedHosts:
               - github.com
-
   steps:
     - id: fetch-base
       name: Fetch Base
@@ -123,19 +121,16 @@ spec:
           database_hostname: "{{ parameters.database_hostname }}"
           database_hostport: "{{ parameters.database_hostport }}"
           application_port: "{{ parameters.application_port }}"
-
-
     - id: publish
       name: Publish
       action: publish:github
       input:
-        allowedHosts: ['github.com']
+        allowedHosts:
+          - github.com
         repoUrl: ${{ parameters.repoUrl }}
-
     - id: register
       name: Register
       action: catalog:register
       input:
         repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
-        catalogInfoPath: '/catalog-info.yaml'
-
+        catalogInfoPath: /catalog-info.yaml
