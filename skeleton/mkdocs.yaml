@@ -1,0 +1,6 @@
+site_name: culturadevops-it-backstage-docs
+site_description: CulturadevopsIT Backstage Docs
+plugins:
+  - techdocs-core
+nav:
+  - Getting Started: index.md
