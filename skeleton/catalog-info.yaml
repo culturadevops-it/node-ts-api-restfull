@@ -1,7 +1,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: ${{ values.name | dump }}
+  name: ${{ values.name }}
   description: ${{ values.description | dump }}
   annotations:
     github.com/project-slug: ${{ values.github_username + "/" + values.name }}
@@ -24,6 +24,6 @@ spec:
   owner: ${{ values.owner | dump }}
   system: ${{ values.system }}
   providesApis:
-    - component: ${{ values.name | dump }}
+    - component: ${{ values.name }}
   dependencies:
     - resource: ${{ values.database_hostname }}
