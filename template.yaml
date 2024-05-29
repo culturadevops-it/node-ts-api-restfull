@@ -100,10 +100,9 @@ spec:
           type: string
           ui:field: RepoUrlPicker
           ui:options:
-            allowedOwners:
-              - culturadevopsit
             allowedHosts:
               - github.com
+              - dev.azure.com
   steps:
     - id: fetch-base
       name: Fetch Base
