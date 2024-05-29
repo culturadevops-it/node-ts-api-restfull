@@ -118,6 +118,23 @@ spec:
               - github.com
             allowedOwners:
               - culturadevops-it
+    - title: Choose a location
+      description: >-
+        Organization is an Azure DevOps organization. Owner is an Azure DevOps project.
+        Repository is the name of the repository Backstage will create for you.
+      required:
+        - repoUrl
+      properties:
+        repoUrl:
+          title: Repository Location
+          type: string
+          ui:field: RepoUrlPicker
+            allowedOwners:
+              - culturadevopsit
+          ui:options:
+            allowedHosts:
+              - dev.azure.com
+
   steps:
     - id: fetch-base
       name: Fetch Base
@@ -145,10 +162,19 @@ spec:
       name: Publish
       action: publish:github
       input:
-        allowedHosts: ['github.com']
+        allowedHosts: ["github.com"]
         description: This is ${{ parameters.name }}
         repoUrl: ${{ parameters.repoUrl }}
         
+    - id: publish
+      name: Publish
+      action: publish:azure
+      input:
+        allowedHosts: ["dev.azure.com"]
+        description: This is ${{ parameters.name }}
+        repoUrl: ${{ parameters.repoUrl }}
+
+
     - id: register
       name: Register
       action: catalog:register

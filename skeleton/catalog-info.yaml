@@ -4,7 +4,6 @@ metadata:
   name: ${{ values.name }}
   description: ${{ values.description }}
   annotations:
-    github.com/project-slug: ${{ values.github_username + "/" + values.name }}
     backstage.io/techdocs-ref: dir:.
     grafana/dashboard-selector: backstage-grafana-selector
   tags:
@@ -14,10 +13,6 @@ metadata:
     - restfull
     - typescript
     - node
-  links:
-    - url: https://github.com/${{values.github_username + "/" + values.name}}
-      title: Repository
-      icon: github
 spec:
   type: service
   lifecycle: experimental
