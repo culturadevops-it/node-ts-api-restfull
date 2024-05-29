@@ -23,7 +23,5 @@ spec:
   lifecycle: experimental
   owner: ${{ values.owner | dump }}
   system: ${{ values.system }}
-  providesApis:
-    - component: ${{ values.name }}
   dependencies:
     - resource: ${{ values.database_hostname }}
