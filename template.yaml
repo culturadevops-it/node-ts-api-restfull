@@ -22,7 +22,7 @@ spec:
         - database_hostname
         - database_hostport
         - application_port
-        - github_user
+        - github_username
         - github_token
       properties:
         name:
