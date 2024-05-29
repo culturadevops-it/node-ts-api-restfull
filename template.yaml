@@ -22,6 +22,7 @@ spec:
         - database_hostname
         - database_hostport
         - application_port
+        - github_token
       properties:
         name:
           title: Artifact Name
@@ -129,7 +130,7 @@ spec:
       name: Publish
       action: publish:github
       input:
-        token: "{{ parameters.github_token }}"
+        token: "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"
         allowedHosts:
           - github.com
         repoUrl: ${{ parameters.repoUrl }}
