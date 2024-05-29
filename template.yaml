@@ -29,7 +29,7 @@ spec:
           description: The name of the artifact. It must start and end with a letter, and
             can contain underscores and numbers in between. Maximum length is 30
             characters.
-          pattern: ^[a-z]{1}(?:\-[a-z,0-9]{1,28})[a-z,0-9]{1}$
+          pattern: ^[a-z]{1}[a-z,0-9,-,_]{1,28}[a-z,0-9]{1}$
           minLength: 3
           maxLength: 30
         description:
