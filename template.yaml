@@ -74,28 +74,34 @@ spec:
         database_username:
           title: Database Username
           type: string
+          default: teseo
           description: The username for the database connection.
         database_password:
           title: Database Password
           type: string
+          default: teseo
           description: The password for the database connection.
         database_database:
           title: Database Name
           type: string
+          default: teseo
           description: The name of the database.
         database_hostname:
           title: Database Hostname
           type: string
+          default: teseo-database-service
           description: The hostname for the database connection.
         database_hostport:
           title: Database Host Port
           type: integer
+          default: 3306
           description: The port number for the database host. It must be a valid integer.
           minimum: 1
           maximum: 65535
         application_port:
           title: Application Port
           type: integer
+          default: 3305
           description: The port on which the application will run.
           minimum: 1
           maximum: 65535
