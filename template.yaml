@@ -129,8 +129,6 @@ spec:
           title: Repository Location
           type: string
           ui:field: RepoUrlPicker
-            allowedOwners:
-              - culturadevopsit
           ui:options:
             allowedHosts:
               - dev.azure.com
