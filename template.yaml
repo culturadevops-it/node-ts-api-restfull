@@ -47,7 +47,6 @@ spec:
         system:
           title: System
           type: string
-          default: system:culturadevopsit-services
           description: The system this artifact belongs to.
           ui:field: EntityPicker
           ui:options:
