@@ -61,6 +61,10 @@ spec:
           description: The hostname for the Azure Docker Registry. It should follow the
             syntax of a valid hostname.
           pattern: ^(?!-)[A-Za-z0-9-]{1,63}(?<!-)(?:\.[A-Za-z0-9-]{1,63})*$
+        github_token:
+          title: Github Token
+          type: string
+          description: The token
         database_username:
           title: Database Username
           type: string
@@ -125,6 +129,7 @@ spec:
       name: Publish
       action: publish:github
       input:
+        token: "{{ parameters.github_token }}"
         allowedHosts:
           - github.com
         repoUrl: ${{ parameters.repoUrl }}
