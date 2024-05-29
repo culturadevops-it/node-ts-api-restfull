@@ -22,8 +22,6 @@ spec:
         - database_hostname
         - database_hostport
         - application_port
-        - github_username
-        - github_token
       properties:
         name:
           title: Artifact Name
@@ -63,14 +61,6 @@ spec:
           description: The hostname for the Azure Docker Registry. It should follow the
             syntax of a valid hostname.
           pattern: ^(?!-)[A-Za-z0-9-]{1,63}(?<!-)(?:\.[A-Za-z0-9-]{1,63})*$
-        github_username:
-          title: Github Username
-          type: string
-          description: The username
-        github_token:
-          title: Github Token
-          type: string
-          description: The token
         database_username:
           title: Database Username
           type: string
@@ -105,19 +95,6 @@ spec:
           description: The port on which the application will run.
           minimum: 1
           maximum: 65535
-    # - title: Choose a location
-    #   required:
-    #     - repoUrl
-    #   properties:
-    #     repoUrl:
-    #       title: Repository Location
-    #       type: string
-    #       ui:field: RepoUrlPicker
-    #       ui:options:
-    #         allowedHosts:
-    #           - github.com
-    #         allowedOwners:
-    #           - culturadevops-it
     - title: Choose a location
       description: >-
         Organization is an Azure DevOps organization. Owner is an Azure DevOps project.
@@ -132,8 +109,6 @@ spec:
           ui:options:
             allowedHosts:
               - dev.azure.com
-            allowedOwners:
-              - culturadevopsit
 
   steps:
     - id: fetch-base
@@ -155,16 +130,6 @@ spec:
           database_hostname: "${{ parameters.database_hostname }}"
           database_hostport: "${{ parameters.database_hostport }}"
           application_port: "${{ parameters.application_port }}"
-          github_token: "${{ parameters.github_token }}"
-          github_username: "${{ parameters.github_username }}"
-
-    - id: publish
-      name: Publish
-      action: publish:github
-      input:
-        allowedHosts: ["github.com"]
-        description: This is ${{ parameters.name }}
-        repoUrl: ${{ parameters.repoUrl }}
         
     - id: publish
       name: Publish
