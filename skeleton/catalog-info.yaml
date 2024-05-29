@@ -1,11 +1,13 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: ${{ parameters.artifact_name }}
+  name: ${{ values.name | dump }}
+  description: ${{ values.description | dump }}
   annotations:
-    grafana/dashboard-selector: backstage-grafana-selector
+    github.com/project-slug: ${{ values.destination.owner + "/" + values.destination.repo }}
     backstage.io/techdocs-ref: dir:.
-  description:  ${{ parameters.artifact_description }}
+    grafana/dashboard-selector: backstage-grafana-selector
+  description:  ${{ values.description }}
   tags:
     - microservice
     - backend
@@ -13,12 +15,16 @@ metadata:
     - restfull
     - typescript
     - node
+  links:
+    - url: https://github.com/${{values.destination.owner + "/" + values.destination.repo}}
+      title: Repository
+      icon: github
 spec:
   type: service
   lifecycle: experimental
-  owner: ${{ parameters.owner | dump }}
-  system: ${ {parameters.system }}
+  owner: ${{ values.owner | dump }}
+  system: ${ {values.system }}
   providesApis:
-    - component:${{ parameters.artifact_name }}
+    - component:${{ values.name }}
   dependencies:
-    - resource:${{ parameters.database_hostname }}
+    - resource:${{ values.database_hostname }}

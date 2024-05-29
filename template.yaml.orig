@@ -11,8 +11,8 @@ spec:
   parameters:
     - title: Basic sets
       required:
-        - artifact_name
-        - artifact_description
+        - name
+        - description
         - owner
         - system
         - azure_docker_registry_scv_connection
@@ -24,7 +24,7 @@ spec:
         - database_hostport
         - application_port
       properties:
-        artifact_name:
+        name:
           title: Artifact Name
           type: string
           description: The name of the artifact. It must start and end with a letter, and
@@ -33,7 +33,7 @@ spec:
           pattern: ^[a-z][a-z0-9_]{0,13}[a-z]$
           minLength: 3
           maxLength: 15
-        artifact_description:
+        description:
           title: Artifact Description
           type: string
           description: A short description of the artifact.
@@ -111,8 +111,8 @@ spec:
       input:
         url: ./skeleton
         values:
-          artifact_name: "{{ parameters.artifact_name }}"
-          artifact_description: "{{ parameters.artifact_description }}"
+          name: "{{ parameters.name }}"
+          description: "{{ parameters.description }}"
           owner: "{{ parameters.owner }}"
           system: "{{ parameters.system }}"
           azure_docker_registry_scv_connection: "{{ parameters.azure_docker_registry_scv_connection }}"
@@ -130,9 +130,9 @@ spec:
         allowedHosts:
           - github.com
           - dev.azure.com
-        description: this is {{ parameters.artifact_name }}
+        description: this is {{ parameters.name }}
         repoUrl: xxxxxxxxx
-        gitCommitMessage: Congratulations !! take your {{ parameters.artifact_name }} artifact :)
+        gitCommitMessage: Congratulations !! take your {{ parameters.name }} artifact :)
         topics:
           - backstage-include
           - culturadevops-it

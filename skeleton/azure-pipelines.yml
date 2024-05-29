@@ -13,9 +13,9 @@ resources:
 - repo: self
 
 variables:
-  # ${{ parameters.artifact_name }} build and publish
+  # ${{ parameters.name }} build and publish
   dockerRegistryServiceConnection: '${{ parameters.azure_docker_registry_scv_connection }}'
-  imageRepository: '${{ parameters.artifact_name }}'
+  imageRepository: '${{ parameters.name }}'
   containerRegistry: '${{ parameters.azure_docker_registry_hostname }}'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tagBuildId: '$(Build.BuildId)'

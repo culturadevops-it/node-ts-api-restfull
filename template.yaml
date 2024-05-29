@@ -10,8 +10,8 @@ spec:
   parameters:
     - title: Basic sets
       required:
-        - artifact_name
-        - artifact_description
+        - name
+        - description
         - owner
         - system
         - azure_docker_registry_scv_connection
@@ -23,7 +23,7 @@ spec:
         - database_hostport
         - application_port
       properties:
-        artifact_name:
+        name:
           title: Artifact Name
           type: string
           description: The name of the artifact. It must start and end with a letter, and
@@ -32,7 +32,7 @@ spec:
           pattern: ^[a-z][a-z0-9_]{0,13}[a-z]$
           minLength: 3
           maxLength: 15
-        artifact_description:
+        description:
           title: Artifact Description
           type: string
           description: A short description of the artifact.
@@ -98,8 +98,6 @@ spec:
           type: string
           ui:field: RepoUrlPicker
           ui:options:
-            allowedOwners:
-              - culturadevopsit
             allowedHosts:
               - github.com
   steps:
@@ -109,10 +107,11 @@ spec:
       input:
         url: ./skeleton
         values:
-          artifact_name: "{{ parameters.artifact_name }}"
-          artifact_description: "{{ parameters.artifact_description }}"
+          name: "{{ parameters.name }}"
+          description: "{{ parameters.description }}"
           owner: "{{ parameters.owner }}"
           system: "{{ parameters.system }}"
+          repoUrl: ${{ parameters.repoUrl }}
           azure_docker_registry_scv_connection: "{{ parameters.azure_docker_registry_scv_connection }}"
           azure_docker_registry_hostname: "{{ parameters.azure_docker_registry_hostname }}"
           database_username: "{{ parameters.database_username }}"
@@ -121,6 +120,7 @@ spec:
           database_hostname: "{{ parameters.database_hostname }}"
           database_hostport: "{{ parameters.database_hostport }}"
           application_port: "{{ parameters.application_port }}"
+
     - id: publish
       name: Publish
       action: publish:github
@@ -128,6 +128,7 @@ spec:
         allowedHosts:
           - github.com
         repoUrl: ${{ parameters.repoUrl }}
+        
     - id: register
       name: Register
       action: catalog:register
