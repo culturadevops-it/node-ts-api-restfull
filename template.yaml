@@ -31,7 +31,7 @@ spec:
             characters.
           pattern: ^[a-z][a-z0-9\-]{0,13}[a-z]$
           minLength: 3
-          maxLength: 15
+          maxLength: 30
         description:
           title: Artifact Description
           type: string
