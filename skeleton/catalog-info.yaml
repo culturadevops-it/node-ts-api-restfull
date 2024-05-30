@@ -1,5 +1,5 @@
 apiVersion: backstage.io/v1alpha1
-kind: Component
+kind: API
 metadata:
   name: ${{ values.name }}
   description: ${{ values.description }}
@@ -14,10 +14,106 @@ metadata:
     - typescript
     - node
 spec:
-  type: service
+  type: openapi
   lifecycle: production
   owner: ${{ values.owner }}
   system: ${{ values.system }}
     - component:${{ values.name }}
   dependencies:
     - resource:${{ values.database_hostname }}
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: Faq API
+      version: 1.0.0
+    paths:
+      /api/v1/${{ values.name }}/faqs:
+        get:
+          summary: Get list of FAQs
+          responses:
+            '200':
+              description: A JSON array of FAQ items
+              content:
+                application/json:
+                  schema:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        title:
+                          type: string
+                        description:
+                          type: string
+            '400':
+              description: Bad request
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+        post:
+          summary: Create a new FAQ
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    title:
+                      type: string
+                    description:
+                      type: string
+          responses:
+            '201':
+              description: FAQ created successfully
+            '400':
+              description: Bad request
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+      /api/v1/${{ values.name }}/faqs/{id}:
+        delete:
+          summary: Delete a FAQ
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: string
+          responses:
+            '200':
+              description: FAQ deleted successfully
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+            '400':
+              description: Bad request
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+            '404':
+              description: FAQ not found
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      message:
+                        type: string
