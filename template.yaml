@@ -26,7 +26,7 @@ spec:
         name:
           title: Artifact Name
           type: string
-          default: teseo-faqs-service
+          default: xxxxx-xxxxx-service
           description: The name of the artifact. It must start and end with a letter, and
             can contain underscores and numbers in between. Maximum length is 30
             characters.
@@ -57,12 +57,12 @@ spec:
         azure_docker_registry_scv_connection:
           title: Azure Docker Registry Service Connection
           type: string
-          default: 33c2a3dc-bf12-42a5-acc7-54a52c421fa0
+          default: 33c2a3dc-xxxx-xxxx-xxxx-54a52c421fa0
           description: The service connection string for Azure Docker Registry.
         azure_docker_registry_hostname:
           title: Azure Docker Registry Hostname
           type: string
-          default: culturadevopsit.azurecr.io
+          default: sngulardevsecopsnortheurope.azurecr.io
           description: The hostname for the Azure Docker Registry. It should follow the
             syntax of a valid hostname.
           pattern: ^(?!-)[A-Za-z0-9-]{1,63}(?<!-)(?:\.[A-Za-z0-9-]{1,63})*$
@@ -84,7 +84,7 @@ spec:
         database_hostname:
           title: Database Hostname
           type: string
-          default: teseo-database-service
+          default: culturadevopsit-database-service
           description: The hostname for the database connection.
         database_hostport:
           title: Database Host Port
