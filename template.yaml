@@ -41,7 +41,7 @@ spec:
         owner:
           title: Owner
           type: string
-          default: adminers
+          default: user:guest
           description: The owner of the artifact.
           ui:field: MyGroupsPicker
         system:
@@ -148,7 +148,7 @@ spec:
 
     - id: register
       name: Register
-      action: catalog:register
+      action: catalog:ad
       input:
         repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
         catalogInfoPath: /catalog-info.yaml
